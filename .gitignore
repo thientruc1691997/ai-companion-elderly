@@ -1,7 +1,10 @@
-.env
 venv/
 __pycache__/
 *.pyc
-carecompanion.db
+*.pyo
+.env
+*.db
 node_modules/
-dist/git status
+dist/
+.DS_Store
+*.pt
