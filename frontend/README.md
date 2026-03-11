@@ -1,106 +1,16 @@
-AI-powered elderly care assistant — Chat, Vision, Health Tracking
+# React + Vite
 
-## Project Structure
-```
-carecompanion/
-├── backend/                  # Python FastAPI
-│   ├── main.py               # Entry point
-│   ├── routers/              # API endpoints per tab
-│   │   ├── chat.py           # AI Companion
-│   │   ├── vision.py         # Computer Vision
-│   │   ├── medications.py    # Medication management
-│   │   ├── dashboard.py      # Health metrics
-│   │   └── emergency.py      # Emergency alerts
-│   ├── models/               # AI / Database logic
-│   │   ├── llm_handler.py    # Claude API
-│   │   ├── vision_model.py   # YOLOv8 + MediaPipe
-│   │   └── health_tracker.py # SQLite
-│   └── requirements.txt
-│
-└── frontend/                 # React (Vite)
-    ├── index.html
-    ├── components/          
-    │   ├── Dashboard.jsx
-    │   ├── VoiceCompanion.jsx
-    │   ├── VisionMonitor.jsx
-    │   ├── Medications.jsx
-    │   └── Emergency.jsx
-    └── services/
-        ├── api.js            # All API calls
-        └── speech.js         # Web Speech API
-```
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## Setup & Run
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### 1. Backend (Python)
-```bash
-cd backend
+## React Compiler
 
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate          # macOS/Linux
-# venv\Scripts\activate           # Windows
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-# Install dependencies
-pip install -r requirements.txt
+## Expanding the ESLint configuration
 
-# Create .env file
-echo "ANTHROPIC_API_KEY=sk-ant-xxxx" > .env
-
-# Start server
-python main.py
-# → Server running at http://localhost:8000
-# → API docs at  http://localhost:8000/docs
-```
-
-### 2. Frontend (React + Vite)
-```bash
-cd frontend
-
-# Scaffold Vite + React (if no package.json yet)
-npm create vite@latest . -- --template react
-npm install
-
-# Copy files into src/
-cp components/* src/components/
-cp services/*   src/services/
-
-# Set environment variables
-echo "VITE_API_URL=http://localhost:8000/api" > .env
-echo "VITE_WS_URL=ws://localhost:8000/api"   >> .env
-
-# Start dev server
-npm run dev
-# → Frontend at http://localhost:5173
-```
-
----
-
-## API Endpoints
-
-| Method | Endpoint                  | Description                    |
-|--------|---------------------------|--------------------------------|
-| GET    | `/api/dashboard/overview` | Aggregated health summary      |
-| POST   | `/api/chat/message`       | Send message to AI companion   |
-| WS     | `/api/vision/stream`      | Real-time camera stream        |
-| GET    | `/api/medications/today`  | Today's medication schedule    |
-| POST   | `/api/medications/log`    | Mark a dose as taken           |
-| POST   | `/api/emergency/alert`    | Trigger emergency alert        |
-
-Full interactive docs: http://localhost:8000/docs (Swagger UI — auto-generated)
-
----
-
-## Tech Stack
-
-| Layer     | Technology                             |
-|-----------|----------------------------------------|
-| Backend   | Python 3.11 · FastAPI · Uvicorn        |
-| AI / LLM  | Claude API (Anthropic)                 |
-| Vision    | YOLOv8 (Ultralytics) · MediaPipe Pose  |
-| Database  | SQLite · SQLAlchemy (async)            |
-| Frontend  | React 18 · Vite                        |
-| Voice     | Web Speech API (browser native)        |
-| Realtime  | WebSocket                              |
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
