@@ -1,0 +1,25 @@
+# ── Web Framework ──────────────────────────────
+fastapi==0.111.0
+uvicorn[standard]==0.29.0
+python-multipart==0.0.9        # upload file (video/image)
+websockets==12.0               # real-time camera stream
+
+# ── Database ────────────────────────────────────
+sqlalchemy==2.0.30
+aiosqlite==0.20.0              # async SQLite
+
+# ── AI / LLM ────────────────────────────────────
+anthropic==0.25.0              # Claude API
+# openai==1.30.0               # uncomment if use GPT
+
+# ── Computer Vision ─────────────────────────────
+opencv-python==4.9.0.80
+ultralytics==8.2.0             # YOLOv8
+mediapipe==0.10.11            # Pose estimation / skeleton
+numpy==1.26.4
+
+
+# ── Utilities ───────────────────────────────────
+python-dotenv==1.0.1           # read .env file
+pydantic==2.7.1                # data validation
+httpx==0.27.0                  # async HTTP client
